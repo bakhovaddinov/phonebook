@@ -1,4 +1,4 @@
-import datetime 
+import datetime
 
 class Record:
     def __init__(self, first_name, last_name, phone_number, birth_date):
@@ -14,14 +14,17 @@ class Record:
         self.last_name = last_name
         self.phone_number = phone_number
         self.birth_date = birth_date
-    
-    def is_valid_name(self, name: str): 
+
+    def to_tuple (self):
+        return (self.first_name, self.last_name, self.phone_number, self.birth_date)
+
+    def is_valid_name(self, name: str):
         if not name:
             return False
         if not name[0].isupper() or not name.replace(' ', '').isalnum():
             return False
         return True
-    
+
     def is_valid_number(self, phone_number: str):
         if not phone_number:
             return False
@@ -34,10 +37,10 @@ class Record:
         if birth_date is None:
             return True
         return isinstance(birth_date, datetime.date)
-            
 
 
-    
+
+
 
 
 
