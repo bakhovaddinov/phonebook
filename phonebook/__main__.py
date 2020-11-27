@@ -1,32 +1,39 @@
+from phonebook.design import Ui_MainWindow
+from PyQt5.QtWidgets import QMainWindow, QApplication
+import sys
 from phonebook.entities.record import Record
 from phonebook.store import Store
 from datetime import date
 import sqlite3
+from phonebook.input_window import DialogWindow
 
-command = ''
-while command != 'Exit':
-    command = input('''Hello! 
-    what do you wish to do?
-    available options: 
-    [1] Add a record
-    [2] Deleate a record
-    [3] Show the whole phonebook
-    [4] Edit a record
-    to exit print "Exit"\n ''')
+class MyWidget(QMainWindow, Ui_MainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.refresh()
+        self.add_btn.clicked.connect(self.adding)
 
-    if command == '1':
-        first_name = input('Enter your first name: ')
-        last_name = input('Enter your last name: ')
-        phone = input('Enter your phone number: ')
-        birth_date = date.fromisoformat(input('Enter your birth date: '))
-        store = Store()
-        store.add_record(Record(first_name, last_name, phone, birth_date))
-        store.close()
-    elif command == '2':
-        first_name, last_name = input('Enter first name and last name: ').split(' ')
-        store = Store()
-        store.remove_record(first_name, last_name)
-    elif command == '3':
-        store = Store()
-        store.output()
+    def adding(self):
+        window = DialogWindow()
+        window.show()
+        window.exec()
+        self.refresh()
+    
+    def refresh(self):
+        self.phonebook.clear()
+        for element in Store().output():
+            self.phonebook.addItem(f'{element[0]} {element[1]}  —  {element[2]}  —  {element[3]}')
 
+        
+        
+
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = MyWidget()
+    ex.show()
+    sys.exit(app.exec_())

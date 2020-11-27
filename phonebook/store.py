@@ -22,8 +22,8 @@ class Store:
         self.base.execute('delete from Record where first_name = first_name and last_name = last_name')
 
     def output(self):
-        self.base.execute('select * from Record')
-        print(self.base.fetchall())
+        self.base.execute('select * from Record')   
+        return self.base.fetchall()
 
     def close(self):
         self.connection.close()
