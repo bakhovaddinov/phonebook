@@ -202,6 +202,9 @@ class Ui_input_window(object):
         self.buttonBox.accepted.connect(input_window.accept)
         self.buttonBox.rejected.connect(input_window.reject)
         QtCore.QMetaObject.connectSlotsByName(input_window)
+        input_window.setTabOrder(self.f_name_line, self.l_name_line)
+        input_window.setTabOrder(self.l_name_line, self.number_line)
+        input_window.setTabOrder(self.number_line, self.dateEdit)
 
     def retranslateUi(self, input_window):
         _translate = QtCore.QCoreApplication.translate

@@ -532,6 +532,12 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>f_name_line</tabstop>
+  <tabstop>l_name_line</tabstop>
+  <tabstop>number_line</tabstop>
+  <tabstop>dateEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

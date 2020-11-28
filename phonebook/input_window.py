@@ -7,8 +7,7 @@ from phonebook.design import Ui_MainWindow
 
 
 class DialogWindow(QDialog, Ui_input_window):
-    def __init__(self, Mainwindow):
-        self.mainwindow = Mainwindow
+    def __init__(self):
         QDialog.__init__(self)
         self.setupUi(self)
         self.buttonBox.accepted.connect(self.add_record)
@@ -18,14 +17,13 @@ class DialogWindow(QDialog, Ui_input_window):
         self.close()
 
     def add_record(self):
-        try:
-            first_name = self.f_name_line.text()
-            last_name = self.l_name_line.text()
-            phone_number = self.number_line.text()
-            birth_date = self.dateEdit.date()
-            store = Store()
-            store.add_record(Record(first_name, last_name, phone_number, birth_date))
-            store.close()
-        except:
-            self.mainwindow.error.setText('')
+        # try:
+        first_name = self.f_name_line.text()
+        last_name = self.l_name_line.text()
+        phone_number = self.number_line.text()
+        birth_date = self.dateEdit.date()
+        store = Store()
+        store.add_record(Record(first_name, last_name, phone_number, birth_date))
+        store.close()
+        # except:
             
