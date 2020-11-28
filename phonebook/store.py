@@ -18,8 +18,9 @@ class Store:
         self.base.execute('insert into Record values (?, ?, ?, ?)', record.to_tuple())
         self.connection.commit()
 
-    def remove_record(self, first_name, last_name):
-        self.base.execute('delete from Record where first_name = first_name and last_name = last_name')
+    def remove_record(self, first_name, last_name, phone_number):
+        self.base.execute('delete from Record where first_name = first_name and last_name = last_name and phone_number = phone_number')
+        self.connection.commit()
 
     def output(self):
         self.base.execute('select * from Record')   
