@@ -15,8 +15,9 @@ class Store:
         self.connection.commit()
 
     def add_record(self, record: Record):
+        data = record.to_tuple()
         self.base.execute(
-            'insert into Record values (?, ?, ?, ?)', record.to_tuple())
+            f'insert into Record values ({data[0]}, {data[1]}, {data[2]}, {data[3]})', record.to_tuple())
         self.connection.commit()
 
     def remove_record(self, first_name, last_name, phone_number):
@@ -29,17 +30,17 @@ class Store:
         return self.base.fetchall()
     
     def get_records(self, search_request):
-        result = """select * from Record
+        result = f"""select * from Record
         where 
-            first_name like '%?%' or 
-            last_name = '%?%' or
-            phone_number = '%?%' or
-            birth_date = '%?%' 
+            first_name like '%{search_request}%' or 
+            last_name like '%{search_request}%' or
+            phone_number like '%{search_request}%' or
+            birth_date like '%{search_request}%'
         """
-        requests = (search_request, search_request, search_request, search_request, )
-        print(requests)
-        return self.base.execute(result, requests, ).fetchall()
-
+        print(result)
+        data = self.base.execute(result).fetchall()
+        print(data)
+        return data
 
     def update_record(self, phone_number: str, new_record: Record):
 
