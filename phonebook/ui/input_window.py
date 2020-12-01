@@ -2,10 +2,11 @@ from PyQt5.QtWidgets import QDialog
 from phonebook.ui.dialog import Ui_input_window
 from phonebook.ui.design import Ui_MainWindow
 from phonebook.store import Store
+from phonebook.ui.error_window import ErrorWindow
 from phonebook.entities.record import Record
 
 
-class DialogWindow(QDialog, Ui_input_window):
+class InputWindow(QDialog, Ui_input_window):
     def __init__(self, data=None):
         QDialog.__init__(self)
         self.setupUi(self)
@@ -20,7 +21,6 @@ class DialogWindow(QDialog, Ui_input_window):
         self.close()
 
     def add_record(self):
-        # try:
         first_name = self.f_name_line.text()
         last_name = self.l_name_line.text()
         phone_number = self.number_line.text()
@@ -29,4 +29,3 @@ class DialogWindow(QDialog, Ui_input_window):
         store.add_record(
             Record(first_name, last_name, phone_number, birth_date))
         store.close()
-        # except:

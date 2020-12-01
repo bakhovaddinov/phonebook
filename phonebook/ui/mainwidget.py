@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow
 from phonebook.store import Store
 from phonebook.ui.design import Ui_MainWindow
-from phonebook.ui.input_window import DialogWindow
+from phonebook.ui.input_window import InputWindow
+from phonebook.ui.error_window import ErrorWindow
 
 
 class MainWidget(QMainWindow, Ui_MainWindow):
@@ -16,7 +17,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.ed_btn.clicked.connect(self.edit)
 
     def adding(self):
-        window = DialogWindow()
+        window = InputWindow()
         window.show()
         window.exec()
         self.refresh()
@@ -35,11 +36,12 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     def edit(self):
         data = self.phonebook.currentItem().text().split('  —  ')
-        window = DialogWindow(data=data)
+        window = InputWindow(data=data)
         window.show()
         window.exec()
 
     def search_func(self):
+        self.phonebook.clear()
         if self.search_line.text():
             for element in self.store.get_records(self.search_line.text()):
                 self.phonebook.addItem(
