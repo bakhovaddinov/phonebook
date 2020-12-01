@@ -12,7 +12,7 @@ class Record:
         self.phone_number = phone_number
         self.birth_date = birth_date
 
-    def to_tuple (self):
+    def to_tuple(self):
         return (self.first_name, self.last_name, self.phone_number, self.birth_date.toString('MMMM d, yyyy'))
 
     def is_valid_name(self, name: str):
@@ -30,11 +30,3 @@ class Record:
         if len(phone_number) != 11:
             return False
         return True
-
-
-
-
-
-
-
-

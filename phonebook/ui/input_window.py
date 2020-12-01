@@ -6,9 +6,13 @@ from phonebook.entities.record import Record
 
 
 class DialogWindow(QDialog, Ui_input_window):
-    def __init__(self):
+    def __init__(self, data=None):
         QDialog.__init__(self)
         self.setupUi(self)
+        if data:
+            self.f_name_line.setText(data[0].split()[0])
+            self.l_name_line.setText(data[0].split()[1])
+            self.number_line.setText(data[1])
         self.buttonBox.accepted.connect(self.add_record)
         self.buttonBox.rejected.connect(self.cancel)
 
