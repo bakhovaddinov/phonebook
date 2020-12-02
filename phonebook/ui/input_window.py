@@ -7,9 +7,10 @@ from phonebook.entities.record import Record
 
 
 class InputWindow(QDialog, Ui_input_window):
-    def __init__(self, data=None):
+    def __init__(self, mainwidget=None, data=None):
         QDialog.__init__(self)
         self.setupUi(self)
+        self.mainwidget = mainwidget
         if data:
             self.f_name_line.setText(data[0].split()[0])
             self.l_name_line.setText(data[0].split()[1])
@@ -21,11 +22,14 @@ class InputWindow(QDialog, Ui_input_window):
         self.close()
 
     def add_record(self):
-        first_name = self.f_name_line.text()
-        last_name = self.l_name_line.text()
-        phone_number = self.number_line.text()
-        birth_date = self.dateEdit.date()
-        store = Store()
-        store.add_record(
-            Record(first_name, last_name, phone_number, birth_date))
-        store.close()
+        try:
+            first_name = self.f_name_line.text()
+            last_name = self.l_name_line.text()
+            phone_number = self.number_line.text()
+            birth_date = self.dateEdit.date()
+            store = Store()
+            store.add_record(
+                Record(first_name, last_name, phone_number, birth_date))
+            store.close()
+        except ValueError as error:
+            self.mainwidget.msg_error(error)                                                                                                                                                                                    

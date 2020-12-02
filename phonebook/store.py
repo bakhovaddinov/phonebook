@@ -37,9 +37,7 @@ class Store:
             phone_number like '%{search_request}%' or
             birth_date like '%{search_request}%'
         """
-        print(result)
         data = self.base.execute(result).fetchall()
-        print(data)
         return data
 
     def update_record(self, phone_number: str, new_record: Record):
