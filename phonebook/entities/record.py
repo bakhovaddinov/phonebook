@@ -2,13 +2,18 @@
 class Record:
     def __init__(self, first_name, last_name, phone_number, birth_date):
         if not self.is_valid_name(first_name):
-            raise ValueError("first_name is incorrect")
+            raise ValueError('''The first_name is incorrect 
+        \nthe first letter should be capital
+        \nalso don't use '—' ''')
         if not self.is_valid_name(last_name):
-            raise ValueError("last_name is incorrect")
+            raise ValueError('''The last_name is incorrect 
+        \nthe first letter should be capital
+        \nalso don't use '—' ''')
         if not self.is_valid_number(phone_number):
-            raise ValueError("phone_number is incorrect")
-        self.first_name = first_name
-        self.last_name = last_name
+            raise ValueError('''The phone_number is incorrect
+        \nit should start with '+7' or '8' and 10 more numbers ''')
+        self.first_name = first_name.replace('—','')
+        self.last_name = last_name.replace('—','')
         self.phone_number = phone_number.replace('+7', '8')
         self.birth_date = birth_date
 
