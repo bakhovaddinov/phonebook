@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>input_window</class>
- <widget class="QDialog" name="input_window">
+ <class>adding_window</class>
+ <widget class="QDialog" name="adding_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -563,7 +563,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>input_window</receiver>
+   <receiver>adding_window</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -579,7 +579,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>input_window</receiver>
+   <receiver>adding_window</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

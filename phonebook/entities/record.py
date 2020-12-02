@@ -9,7 +9,7 @@ class Record:
             raise ValueError("phone_number is incorrect")
         self.first_name = first_name
         self.last_name = last_name
-        self.phone_number = phone_number
+        self.phone_number = phone_number.replace('+7', '8')
         self.birth_date = birth_date
 
     def to_tuple(self):
@@ -23,6 +23,7 @@ class Record:
         return True
 
     def is_valid_number(self, phone_number: str):
+        phone_number = phone_number.replace('+7', '8')
         if not phone_number:
             return False
         if not phone_number.isnumeric() or not phone_number[0] == '8':

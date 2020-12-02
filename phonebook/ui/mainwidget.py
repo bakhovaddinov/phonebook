@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from phonebook.store import Store
 from phonebook.ui.design import Ui_MainWindow
-from phonebook.ui.input_window import InputWindow
-from phonebook.ui.error_window import ErrorWindow
+from phonebook.ui.adding_window import InputWindow
+from phonebook.ui.error_window import show_error_message
 
 
 class MainWidget(QMainWindow, Ui_MainWindow):
@@ -17,7 +17,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.ed_btn.clicked.connect(self.edit)
 
     def adding(self):
-        window = InputWindow(mainwidget=self)
+        window = InputWindow(self.store)
         window.show()
         window.exec()
         self.refresh()
@@ -35,16 +35,11 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.refresh()
 
     def edit(self):
-        data = self.phonebook.currentItem().text().split('  —  ')
-        window = InputWindow(mainwidget=self, data=data)
+        phone_number = self.phonebook.currentItem().text().split('  —  ')[1]
+        window = InputWindow(self.store, phone_number)
         window.show()
         window.exec()
-
-    def msg_error(self, code_error):
-        msg = QMessageBox()
-        msg.setWindowTitle("You've input invalid data ")
-        msg.setText(str(code_error))
-        x = msg.exec_()
+        self.refresh()
 
     def search_func(self):
         self.phonebook.clear()
@@ -52,3 +47,5 @@ class MainWidget(QMainWindow, Ui_MainWindow):
             for element in self.store.get_records(self.search_line.text()):
                 self.phonebook.addItem(
                 f'{element[0]} {element[1]}  —  {element[2]}  —  {element[3]}')
+        else:
+            self.refresh()

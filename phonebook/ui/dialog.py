@@ -11,10 +11,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_input_window(object):
-    def setupUi(self, input_window):
-        input_window.setObjectName("input_window")
-        input_window.resize(400, 300)
+class Ui_adding_window(object):
+    def setupUi(self, adding_window):
+        adding_window.setObjectName("adding_window")
+        adding_window.resize(400, 300)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -160,13 +160,13 @@ class Ui_input_window(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        input_window.setPalette(palette)
-        self.buttonBox = QtWidgets.QDialogButtonBox(input_window)
+        adding_window.setPalette(palette)
+        self.buttonBox = QtWidgets.QDialogButtonBox(adding_window)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        self.gridLayoutWidget_2 = QtWidgets.QWidget(input_window)
+        self.gridLayoutWidget_2 = QtWidgets.QWidget(adding_window)
         self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 0, 401, 181))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
@@ -201,29 +201,29 @@ class Ui_input_window(object):
         self.dateEdit.setObjectName("dateEdit")
         self.gridLayout_2.addWidget(self.dateEdit, 5, 1, 1, 1)
 
-        self.retranslateUi(input_window)
-        self.buttonBox.accepted.connect(input_window.accept)
-        self.buttonBox.rejected.connect(input_window.reject)
-        QtCore.QMetaObject.connectSlotsByName(input_window)
-        input_window.setTabOrder(self.f_name_line, self.l_name_line)
-        input_window.setTabOrder(self.l_name_line, self.number_line)
-        input_window.setTabOrder(self.number_line, self.dateEdit)
+        self.retranslateUi(adding_window)
+        self.buttonBox.accepted.connect(adding_window.accept)
+        self.buttonBox.rejected.connect(adding_window.reject)
+        QtCore.QMetaObject.connectSlotsByName(adding_window)
+        adding_window.setTabOrder(self.f_name_line, self.l_name_line)
+        adding_window.setTabOrder(self.l_name_line, self.number_line)
+        adding_window.setTabOrder(self.number_line, self.dateEdit)
 
-    def retranslateUi(self, input_window):
+    def retranslateUi(self, adding_window):
         _translate = QtCore.QCoreApplication.translate
-        input_window.setWindowTitle(_translate("input_window", "Record"))
-        self.label_7.setText(_translate("input_window", "Phone Number:"))
-        self.label_5.setText(_translate("input_window", "Last Name:"))
-        self.label_8.setText(_translate("input_window", "First Name:"))
-        self.label_6.setText(_translate("input_window", "Date of birth (optional):"))
-        self.dateEdit.setDisplayFormat(_translate("input_window", "dd/MM/yyyy"))
+        adding_window.setWindowTitle(_translate("adding_window", "Record"))
+        self.label_7.setText(_translate("adding_window", "Phone Number:"))
+        self.label_5.setText(_translate("adding_window", "Last Name:"))
+        self.label_8.setText(_translate("adding_window", "First Name:"))
+        self.label_6.setText(_translate("adding_window", "Date of birth (optional):"))
+        self.dateEdit.setDisplayFormat(_translate("adding_window", "dd/MM/yyyy"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    input_window = QtWidgets.QDialog()
-    ui = Ui_input_window()
-    ui.setupUi(input_window)
-    input_window.show()
+    adding_window = QtWidgets.QDialog()
+    ui = Ui_adding_window()
+    ui.setupUi(adding_window)
+    adding_window.show()
     sys.exit(app.exec_())
