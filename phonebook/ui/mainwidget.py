@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from phonebook.store import Store
 from phonebook.ui.design import Ui_MainWindow
 from phonebook.ui.input_window import InputWindow
@@ -17,7 +17,7 @@ class MainWidget(QMainWindow, Ui_MainWindow):
         self.ed_btn.clicked.connect(self.edit)
 
     def adding(self):
-        window = InputWindow()
+        window = InputWindow(mainwidget=self)
         window.show()
         window.exec()
         self.refresh()
@@ -36,9 +36,15 @@ class MainWidget(QMainWindow, Ui_MainWindow):
 
     def edit(self):
         data = self.phonebook.currentItem().text().split('  —  ')
-        window = InputWindow(data=data)
+        window = InputWindow(mainwidget=self, data=data)
         window.show()
         window.exec()
+
+    def msg_error(self, code_error):
+        msg = QMessageBox()
+        msg.setWindowTitle("You've input invalid data ")
+        msg.setText(str(code_error))
+        x = msg.exec_()
 
     def search_func(self):
         self.phonebook.clear()
