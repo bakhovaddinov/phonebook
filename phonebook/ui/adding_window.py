@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5 import QtCore
-from phonebook.ui.dialog import Ui_adding_window
-from phonebook.ui.design import Ui_MainWindow
-from phonebook.store import Store
-from phonebook.ui.error_window import show_error_message
-from phonebook.entities.record import Record
+from ui.dialog import Ui_adding_window
+from ui.design import Ui_MainWindow
+from store import Store
+from ui.error_window import show_error_message
+from entities.record import Record
 
 
 class InputWindow(QDialog, Ui_adding_window):

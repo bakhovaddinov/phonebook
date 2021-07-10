@@ -1,5 +1,5 @@
 import sqlite3
-from phonebook.entities.record import Record
+from entities.record import Record
 
 
 class Store:

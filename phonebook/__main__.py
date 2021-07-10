@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from phonebook.ui.mainwidget import MainWidget
+from ui.mainwidget import MainWidget
 
 
 def main():

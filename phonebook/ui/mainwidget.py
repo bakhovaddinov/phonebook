@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from phonebook.store import Store
-from phonebook.ui.design import Ui_MainWindow
-from phonebook.ui.adding_window import InputWindow
-from phonebook.ui.error_window import show_error_message
+from store import Store
+from ui.design import Ui_MainWindow
+from ui.adding_window import InputWindow
+from ui.error_window import show_error_message
 
 
 class MainWidget(QMainWindow, Ui_MainWindow):

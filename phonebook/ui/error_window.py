@@ -1,4 +1,4 @@
-from phonebook.ui.error import Ui_Dialog
+from ui.error import Ui_Dialog
 from PyQt5.QtWidgets import QDialog, QMessageBox
 
 
