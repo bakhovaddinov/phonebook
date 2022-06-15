@@ -2,7 +2,7 @@
 ## Installation 
 Open your terminal and do the following:
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 Then simply run __main__.py script. 
 
